@@ -89,7 +89,8 @@ export const Form = () => {
   return (
     <>
       {!display ? (
-        <div className="p-6 flex flex-col gap-6">
+        <>
+        <div className="p-6 flex flex-col gap-5">
           <div className="space-y-2">
             <label
               className="flex peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-medium"
@@ -189,15 +190,58 @@ export const Form = () => {
               onChange={(e) => setMessage(e.target.value)}
             />
           </div>
-          <div className="flex justify-between text-white">
-            <button type="button" onClick={reset}>
-              A
-            </button>
-            <button type="button" onClick={submit}>
-              B
-            </button>
-          </div>
+          
         </div>
+        <div className="bg-gray-100 w-full p-[1px] "></div>
+        <div className="flex justify-between text-white p-6">
+          <button
+            type="button"
+            onClick={reset}
+            className="flex gap-2 items-center justify-center text-black bg-white border-gray-200"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="lucide lucide-refresh-cw h-4 w-4"
+            >
+              <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
+              <path d="M21 3v5h-5"></path>
+              <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
+              <path d="M8 16H3v5"></path>
+            </svg>
+            รีเซ็ต
+          </button>
+          <button
+            type="button"
+            onClick={submit}
+            className="flex gap-2 items-center justify-center  bg-gradient-to-r from-purple-600 to-indigo-600"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="lucide lucide-send h-4 w-4"
+            >
+              <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path>
+              <path d="m21.854 2.147-10.94 10.939"></path>
+            </svg>
+            ส่งแบบสำรวจ
+          </button>
+        </div>
+        </>
       ) : (
         <div className="p-6 flex flex-col gap-6">
           <div className="bg-[#f0fdf4] border border-[#bbf7d0] flex flex-col text-left p-4 rounded-[0.5rem] gap-3">
@@ -255,98 +299,5 @@ export const Form = () => {
         </div>
       )}
     </>
-
-    // <>
-    // {display ? <div className="p-6 flex flex-col gap-6">
-    //     <div className="space-y-2">
-    //       <label
-    //         className="flex peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-medium"
-    //         htmlFor="name"
-    //       >
-    //         ชื่อ <span className="text-red-500">*</span>
-    //       </label>
-    //       <input
-    //         className="bg-white flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
-    //         id="name"
-    //         placeholder="กรุณากรอกชื่อของคุณ"
-    //         name="name"
-    //         value=""
-    //       />
-    //     </div>
-    //     <div className="space-y-2">
-    //       <label
-    //         className="flex peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-medium"
-    //         htmlFor="name"
-    //       >
-    //         อีเมล <span className="text-red-500">*</span>
-    //       </label>
-    //       <input
-    //         className="bg-white flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
-    //         id="email"
-    //         name="email"
-    //         type="email"
-    //         placeholder="example@gmail.com"
-    //         value=""
-    //       />
-    //     </div>
-    //     <div className="space-y-2">
-    //       <label
-    //         className="flex peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-medium"
-    //         htmlFor="name"
-    //       >
-    //         เลือกหนังที่คุณชอบ <span className="text-red-500">*</span>
-    //       </label>
-    //       <div className="flex flex-col items-start gap-6">
-    //         {movies.map((n, i) => (
-    //           <label className="flex text-sm gap-4 items-start text-left " key={i}>
-    //             <div className="pt-1">
-    //               <input
-    //                 type="radio"
-    //                 name="favoriteMovie"
-    //                 value={i}
-    //                 className="h-4 w-4 text-white"
-    //               />
-    //             </div>
-    //             <div className="flex flex-col text-left ">
-    //               <span className="text-left">{n.title} ({n.year})</span>
-    //               <span className="text-left">Director: {n.director}</span>
-    //             </div>
-    //           </label>
-    //         ))}
-    //       </div>
-    //     </div>
-    //     <div className="space-y-2">
-    //       <label
-    //         className="flex peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-medium"
-    //         htmlFor="comment"
-    //       >
-    //         ความคิดเห็นเกี่ยวกับหนัง
-    //       </label>
-    //       <textarea
-    //         className="bg-white flex w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
-    //         rows={3}
-    //         placeholder="พิมพ์ความคิดเห็นของคุณที่นี่..."
-    //       />
-    //     </div>
-    //     <div className="flex justify-between text-white">
-    //       <button type="button">A</button>
-    //       <button type="button" onClick={submit}>B</button>
-    //     </div>
-
-    //   </div>
-    //   :
-    //   <div className="p-6 flex flex-col gap-6">
-    //     <div className="bg-[#f0fdf4] border border-[#bbf7d0] flex flex-col text-left p-4 rounded-[0.5rem]">
-    //         <h1 className="text-lg text-[#166534]">ส่งแบบสำรวจสำเร็จ!</h1>
-    //         <p>ชื่อ: </p>
-    //         <p>อีเมล: </p>
-    //         <p>หนังที่เลือก: </p>
-    //     </div>
-    //     <div className="text-white">
-    //         <button>Reset</button>
-    //     </div>
-    //   </div> }
-
-    // </>
   );
 };
